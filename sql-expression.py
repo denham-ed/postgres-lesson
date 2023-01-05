@@ -40,13 +40,13 @@ with db.connect() as connection:
     # select_query = artist_table.select()
 
     # Query 2 - Select all names from "Artist" table
-    # select_query = artist_table.select().with_only_columns([artist_table.c.Name])
+    # select_query = artist_table.select().with_only_columns(
+    # [artist_table.c.Name])
 
     # Query 3 - Select Queen from Artist table
-    # select_query = artist_table.select().where(artist_table.c.Name == "Queen")
+    # select_query = artist_table.select().where(
+    # artist_table.c.Name == "Queen")
 
     results = connection.execute(select_query)
     for result in results:
         print(result)
-
-

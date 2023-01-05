@@ -58,4 +58,3 @@ base.metadata.create_all(db)
 artist = session.query(Artist).filter_by(Name="Queen").first()
 print(artist.ArtistId, artist.Name, sep=" | ")
 # select_query = artist_table.select().where(artist_table.c.Name == "Queen")
-
