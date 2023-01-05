@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Executing the instructions from the "chinook" database
-db.create_engine("postgresql:///chinook")
+db = create_engine("postgresql:///chinook")
 base = declarative_base()
 
 
@@ -25,8 +25,8 @@ class Album(base):
 
 class Track(base):
     __tablename__ = "Track"
-    TrackId = Column(Integer, primary_key=True),
-    Name = Column(String),
+    TrackId = Column(Integer, primary_key=True)
+    Name = Column(String)
     AlbumId = Column(Integer, ForeignKey("Album.AlbumId"))
     MediaTypeId = Column(Integer, primary_key=False)
     GenreId = Column(Integer, primary_key=False)
@@ -36,10 +36,26 @@ class Track(base):
     Price = Column(Float)
 
 
-
 # Creates instance of a session
 Session = sessionmaker(db)
 # Opens a session
 session = Session()
-# Creates teh databse using declarative_base subclass
+# Creates the database using declarative_base subclass
 base.metadata.create_all(db)
+
+
+# Query 1 - Select all records from the "Artist" table
+# artists = session.query(Artist)
+# for artist in artists:
+#     print(artist.ArtistId, artist.Name, sep=" | ")
+
+# Query 2 - Select all names from "Artist" table
+# artists = session.query(Artist)
+# for artist in artists:
+#     print(artist.Name)
+
+# Query 3 - Select Queen from Artist table
+artist = session.query(Artist).filter_by(Name="Queen").first()
+print(artist.ArtistId, artist.Name, sep=" | ")
+# select_query = artist_table.select().where(artist_table.c.Name == "Queen")
+
