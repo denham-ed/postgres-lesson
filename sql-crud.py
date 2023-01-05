@@ -102,23 +102,23 @@ tim_berners_lee = Programmer(
 #         print("Gender not defined")
 
 # Deleting a record
-f_name = input("Enter a first name: ")
-l_name = input("Enter a surname: ")
+# f_name = input("Enter a first name: ")
+# l_name = input("Enter a surname: ")
 
-programmer = session.query(Programmer).filter_by(
-    first_name=f_name, last_name=l_name).first()
+# programmer = session.query(Programmer).filter_by(
+#     first_name=f_name, last_name=l_name).first()
 
-if programmer is not None:
-    print("Programmer Found: ", programmer.first_name + " " + programmer.last_name)
-    confirmation = input("Are you sure you want to delete this record? (Y/N)")
-    if confirmation.lower() == "y":
-        session.delete(programmer)
-        session.commit()
-        print("Programmer is outta here")
-    else:
-        print("Close call, but we didn't delete them!")
-else:
-    print("No records found")
+# if programmer is not None:
+#     print("Programmer Found: ", programmer.first_name + " " + programmer.last_name)
+#     confirmation = input("Are you sure you want to delete this record? (Y/N)")
+#     if confirmation.lower() == "y":
+#         session.delete(programmer)
+#         session.commit()
+#         print("Programmer is outta here")
+#     else:
+#         print("Close call, but we didn't delete them!")
+# else:
+#     print("No records found")
 
 
 # Commit our session to the database
